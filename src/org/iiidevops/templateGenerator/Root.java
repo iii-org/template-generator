@@ -1,9 +1,6 @@
 package org.iiidevops.templateGenerator;
 
-import org.iiidevops.templateGenerator.stage.BuildImageStage;
-import org.iiidevops.templateGenerator.stage.DeployDbStage;
-import org.iiidevops.templateGenerator.stage.ScanCheckmarxStage;
-import org.iiidevops.templateGenerator.stage.Stage;
+import org.iiidevops.templateGenerator.stage.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +19,7 @@ public class Root {
         if (target.isDeployDb()) {
             Target.DbArguments args = target.getDbArguments();
             this.stages.add(new DeployDbStage(args.dbType.name(), args.dbTag));
-            // this.stages.add(new WaitDeployDbStage());
+            this.stages.add(new WaitDeployStage("Wait db deployment", DeployDbStage.SUFFIX));
         }
     }
 }

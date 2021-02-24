@@ -4,8 +4,6 @@ import org.iiidevops.templateGenerator.answers.Answers;
 import org.iiidevops.templateGenerator.answers.GitAnswers;
 import org.iiidevops.templateGenerator.arg.When;
 
-import java.util.List;
-
 public class HelmChartStep extends Step {
     public ApplyAppConfig applyAppConfig;
 
@@ -17,13 +15,13 @@ public class HelmChartStep extends Step {
     public static class Builder {
         String chartName;
         String chartVersion;
-        String shortName;
+        String suffix;
         When when;
         Answers answers;
 
-        public Builder setChartName(String chartName, String shortName) {
+        public Builder setChartName(String chartName, String suffix) {
             this.chartName = chartName;
-            this.shortName = shortName;
+            this.suffix = suffix;
             return this;
         }
 
@@ -32,7 +30,7 @@ public class HelmChartStep extends Step {
             return this;
         }
 
-        public Builder setWhen(List<String> branches) {
+        public Builder setWhen(String... branches) {
             this.when = new When(branches);
             return this;
         }
@@ -57,7 +55,7 @@ public class HelmChartStep extends Step {
         public ApplyAppConfig(Builder builder) {
             this.catalogTemplate = "cattle-global-data:iii-dev-charts3-" + builder.chartName;
             this.version = builder.chartVersion;
-            this.name = "${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-" + builder.shortName;
+            this.name = "${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-" + builder.suffix;
             this.targetNamespace = "${CICD_GIT_REPO_NAME}";
             this.answers = builder.answers;
         }

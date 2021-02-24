@@ -1,5 +1,6 @@
 package org.iiidevops.templateGenerator.stage;
 
+import org.iiidevops.templateGenerator.Constants;
 import org.iiidevops.templateGenerator.answers.PipeSeqAnswers;
 import org.iiidevops.templateGenerator.arg.When;
 import org.iiidevops.templateGenerator.step.HelmChartStep;
@@ -11,8 +12,8 @@ public class ScanCheckmarxStage extends Stage {
         this.name = "Checkmarx source code scan";
         this.steps.add(new HelmChartStep.Builder()
                 .setChartName("scan-checkmarx", "cmx")
-                .setChartVersion("0.1.0")
-                .setWhen(List.of("master", "checkmarx"))
+                .setChartVersion(Constants.SCAN_CHECKMARX_CHART_VERSION)
+                .setWhen("master", "checkmarx")
                 .setAnswers(new PipeSeqAnswers())
                 .build()
         );
