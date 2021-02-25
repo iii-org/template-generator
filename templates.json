@@ -1,0 +1,18 @@
+[
+  {
+    "folderName": "django-postgresql-todo",
+    "buildImage": true,
+    "scanCheckmarx": true,
+    "deployDb": true,
+    "dbArguments": {
+      "dbType": "postgresql",
+      "dbImageTag": "13.2.0"
+    },
+    "deployWeb": true,
+    "webArguments": {
+      "port": 8080
+    },
+    "testPostman": true,
+    "testWebinspect": true
+  }
+]

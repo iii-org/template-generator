@@ -1,38 +1,22 @@
 package org.iiidevops.templateGenerator;
 
-import java.util.Map;
-
 public class Target {
     private String folderName;
     private boolean buildImage = true;
     private boolean scanCheckmarx = true;
     private boolean deployDb = false;
     private DbArguments dbArguments;
+    private boolean deployWeb = false;
+    private WebArguments webArguments;
+    private boolean testPostman = true;
+    private boolean testWebinspect = true;
 
     public Target(String folderName) {
         this.folderName = folderName;
     }
 
-    public Target useBuildImage(boolean use) {
-        this.buildImage = use;
-        return this;
-    }
-
-    public Target useCheckmarx(boolean use) {
-        this.scanCheckmarx = use;
-        return this;
-    }
-
-    public Target enableDb(DB_TYPE dbType, String dbTag) {
-        this.deployDb = true;
-        this.dbArguments = new DbArguments(dbType, dbTag);
-        return this;
-    }
-
-    public Target noDb() {
-        this.deployDb = false;
-        this.dbArguments = null;
-        return this;
+    public WebArguments getWebArguments() {
+        return webArguments;
     }
 
     public boolean isBuildImage() {
@@ -43,9 +27,19 @@ public class Target {
         return scanCheckmarx;
     }
 
+    public boolean isTestPostman() {
+        return testPostman;
+    }
+
+    public boolean isTestWebinspect() {
+        return testWebinspect;
+    }
+
     public boolean isDeployDb() {
         return deployDb;
     }
+
+    public boolean isDeployWeb() { return deployWeb; }
 
     public String getFolderName() {
         return folderName;
@@ -57,18 +51,27 @@ public class Target {
 
     public static final class DbArguments {
         public DB_TYPE dbType;
-        public String dbTag;
+        public String dbImageTag;
 
         public DbArguments(DB_TYPE dbType, String dbTag) {
             this.dbType = dbType;
-            this.dbTag = dbTag;
+            this.dbImageTag = dbTag;
+        }
+
+        public enum DB_TYPE {
+            postgresql,
+            mariadb,
+            mongodb,
+            mysql
         }
     }
 
-    public enum DB_TYPE {
-        postgresql,
-        mariadb,
-        mongodb,
-        mysql
+    public static final class WebArguments {
+        public int port;
+
+        public WebArguments(int port) {
+            this.port = port;
+        }
     }
+
 }

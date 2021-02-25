@@ -25,7 +25,7 @@ public class BuildImageStep extends Step {
 class PublishImageConfig {
     public String dockerfilePath = "./Dockerfile";
     public String buildContext = ".";
-    public String tag = "${CICD_GIT_REPO_NAME}/${CICD_GIT_BRANCH}:latest";
+    public String tag = Constants.BUILD_IMAGE_TAG;
     public boolean pushRemote = true;
     public String registry = Constants.HARBOR_HOST;
 }
