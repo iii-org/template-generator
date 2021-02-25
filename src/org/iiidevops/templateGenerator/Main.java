@@ -27,7 +27,7 @@ public class Main {
             try {
                 Root root = new Root(target);
                 String templateDir = "";
-                if (rootDir != null) {
+                if (rootDir != null && !rootDir.equals("null")) {
                     templateDir += rootDir + "/";
                 }
                 templateDir += target.getName();
