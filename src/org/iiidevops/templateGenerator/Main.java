@@ -22,11 +22,17 @@ public class Main {
         List<Target> templates = gson.fromJson(reader, new TypeToken<List<Target>>() {
         }.getType());
 
+        String rootDir = System.getenv().get("template_root");
         templates.forEach(target -> {
-            Root root = new Root(target);
             try {
-                // TODO: Change to real path
-                mapper.writeValue(new File(".rancher-pipeline.yml"), root);
+                Root root = new Root(target);
+                String folder = "";
+                if (rootDir != null) {
+                    folder += rootDir + "/";
+                }
+                folder += target.getFolderName();
+                mapper.writeValue(new File(folder + "/.rancher-pipeline.yml"),
+                        root);
             } catch (IOException e) {
                 e.printStackTrace();
             }

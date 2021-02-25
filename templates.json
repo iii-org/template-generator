@@ -14,5 +14,21 @@
     },
     "testPostman": true,
     "testWebinspect": true
+  },
+  {
+    "folderName": "nodejs-express",
+    "buildImage": true,
+    "scanCheckmarx": true,
+    "deployDb": false,
+    "dbArguments": {
+      "dbType": "postgresql",
+      "dbImageTag": "13.2.0"
+    },
+    "deployWeb": true,
+    "webArguments": {
+      "port": 3000
+    },
+    "testPostman": true,
+    "testWebinspect": true
   }
 ]
