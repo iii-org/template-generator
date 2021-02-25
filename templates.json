@@ -1,6 +1,6 @@
 [
   {
-    "folderName": "django-postgresql-todo",
+    "name": "django-postgresql-todo",
     "buildImage": true,
     "scanCheckmarx": true,
     "deployDb": true,
@@ -16,7 +16,7 @@
     "testWebinspect": true
   },
   {
-    "folderName": "nodejs-express",
+    "name": "nodejs-express",
     "buildImage": true,
     "scanCheckmarx": true,
     "deployDb": false,

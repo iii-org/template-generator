@@ -1,7 +1,7 @@
 package org.iiidevops.templateGenerator;
 
 public class Target {
-    private String folderName;
+    private String name;
     private boolean buildImage = true;
     private boolean scanCheckmarx = true;
     private boolean deployDb = false;
@@ -11,8 +11,8 @@ public class Target {
     private boolean testPostman = true;
     private boolean testWebinspect = true;
 
-    public Target(String folderName) {
-        this.folderName = folderName;
+    public Target(String name) {
+        this.name = name;
     }
 
     public WebArguments getWebArguments() {
@@ -41,8 +41,8 @@ public class Target {
 
     public boolean isDeployWeb() { return deployWeb; }
 
-    public String getFolderName() {
-        return folderName;
+    public String getName() {
+        return name;
     }
 
     public DbArguments getDbArguments() {

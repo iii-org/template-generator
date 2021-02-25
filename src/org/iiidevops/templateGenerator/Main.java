@@ -26,17 +26,17 @@ public class Main {
         templates.forEach(target -> {
             try {
                 Root root = new Root(target);
-                String folder = "";
+                String templateDir = "";
                 if (rootDir != null) {
-                    folder += rootDir + "/";
+                    templateDir += rootDir + "/";
                 }
-                folder += target.getFolderName();
-                mapper.writeValue(new File(folder + "/.rancher-pipeline.yml"),
+                templateDir += target.getName();
+                mapper.writeValue(new File(templateDir + "/.rancher-pipeline.yml"),
                         root);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.printf("%s written.%n", target.getFolderName());
+            System.out.printf("%s written.%n", target.getName());
         });
         System.out.println("Job done.");
     }
