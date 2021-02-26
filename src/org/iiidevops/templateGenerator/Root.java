@@ -19,12 +19,12 @@ public class Root {
         if (target.isDeployDb()) {
             Target.DbArguments args = target.getDbArguments();
             this.stages.add(new DeployDbStage(args.dbType.name(), args.dbImageTag));
-            this.stages.add(new WaitDeployStage("Wait db deployment", DeployDbStage.SUFFIX));
+            this.stages.add(new WaitDeployStage("System--Wait db deployment", DeployDbStage.SUFFIX));
         }
         if (target.isDeployWeb()) {
             Target.WebArguments args = target.getWebArguments();
             this.stages.add(new DeployWebStage(args.port, target.isDeployDb()));
-            this.stages.add(new WaitDeployStage("Wait web deployment", DeployWebStage.SUFFIX));
+            this.stages.add(new WaitDeployStage("System--Wait web deployment", DeployWebStage.SUFFIX));
         }
         if (target.isTestPostman()) {
             Target.WebArguments args = target.getWebArguments();

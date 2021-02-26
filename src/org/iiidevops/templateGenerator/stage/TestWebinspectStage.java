@@ -7,7 +7,7 @@ import org.iiidevops.templateGenerator.step.HelmChartStep;
 
 public class TestWebinspectStage extends Stage {
     public TestWebinspectStage() {
-        this.name = "Webinspect test";
+        this.name = "Test--Webinspect test";
         this.steps.add(new HelmChartStep.Builder()
                 .setChartName("test-webinspect", "wi")
                 .setChartVersion(Constants.TEST_WEBINSPECT_CHART_VERSION)

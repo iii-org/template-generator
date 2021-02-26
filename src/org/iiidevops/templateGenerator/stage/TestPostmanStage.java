@@ -7,7 +7,7 @@ import org.iiidevops.templateGenerator.step.HelmChartStep;
 
 public class TestPostmanStage extends Stage {
     public TestPostmanStage(int port) {
-        this.name = "Postman test";
+        this.name = "Test--Postman test";
         this.steps.add(new HelmChartStep.Builder()
                 .setChartName("test-postman", "pm")
                 .setChartVersion(Constants.TEST_POSTMAN_CHART_VERSION)

@@ -8,7 +8,7 @@ public class DeployWebStage extends Stage {
     public static final String SUFFIX = "web";
 
     public DeployWebStage(int port, boolean useDb) {
-        this.name = "Deploy app-webserver";
+        this.name = "Deploy--Deploy app-webserver";
         WebAnswers ans = new WebAnswers(port);
         if (useDb) {
             ans.useDb();

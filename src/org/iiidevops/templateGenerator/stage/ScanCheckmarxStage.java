@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ScanCheckmarxStage extends Stage {
     public ScanCheckmarxStage() {
-        this.name = "Checkmarx source code scan";
+        this.name = "Scan--Checkmarx source code scan";
         this.steps.add(new HelmChartStep.Builder()
                 .setChartName("scan-checkmarx", "cmx")
                 .setChartVersion(Constants.SCAN_CHECKMARX_CHART_VERSION)
